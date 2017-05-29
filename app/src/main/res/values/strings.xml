@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Android Simple Exercises</string>
+    <string name="results">Results</string>
+    <string name="result_title">The result</string>
+    <string name="result_sub">of the subtraction is</string>
+    <string name="result_mul">of the multiplication is</string>
+    <string name="result_fact">of the factorial is</string>
+    <string name="result_pow">of the power is</string>
+    <string name="result_sum">of the sum is</string>
+    <string name="warning">Please fill up all the fields to continue</string>
+    <string name="positive_confirm">Ok</string>
+
+</resources>
