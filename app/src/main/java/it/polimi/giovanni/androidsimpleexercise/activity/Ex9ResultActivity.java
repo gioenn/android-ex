@@ -9,12 +9,12 @@ import java.util.List;
 
 import it.polimi.giovanni.androidsimpleexercise.R;
 
-public class Ex5ResultActivity extends AppCompatActivity {
+public class Ex9ResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ex5_result);
+        setContentView(R.layout.activity_ex9_result);
 
         List<String> elements = getIntent().getStringArrayListExtra("results");
 

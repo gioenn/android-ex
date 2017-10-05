@@ -1,14 +1,10 @@
 package it.polimi.giovanni.androidsimpleexercise.activity;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.TextView;
 
 import it.polimi.giovanni.androidsimpleexercise.R;
 import it.polimi.giovanni.androidsimpleexercise.model.Calculator;
@@ -23,60 +19,19 @@ public class Ex5Activity extends AppCompatActivity {
         setContentView(R.layout.activity_ex5);
     }
 
-    private String sum(ViewGroup view){
-        int a = getTermFromViewAtIndex(view, 0);
-        int b = getTermFromViewAtIndex(view, 2);
-        int res = calculator.sum(a, b);
-        return a+"+"+b+"="+res;
+    public void sum(View view){
+        EditText sum1 = (EditText) findViewById(R.id.sum1);
+        int a = Integer.parseInt(sum1.getText().toString());
+
+        EditText sum2 = (EditText) findViewById(R.id.sum2);
+        int b = Integer.parseInt(sum2.getText().toString());
+
+        EditText sum3 = (EditText) findViewById(R.id.sum3);
+        int c = Integer.parseInt(sum3.getText().toString());
+
+        int res = calculator.sum(a, calculator.sum(b, c));
+
+        TextView sumRes = (TextView)  findViewById(R.id.sumRes);
+        sumRes.setText(res+"");
     }
-
-    private String sub(ViewGroup view){
-        int a = getTermFromViewAtIndex(view, 0);
-        int b = getTermFromViewAtIndex(view, 2);
-        int res = calculator.sub(a, b);
-        return a+"-"+b+"="+res;
-    }
-
-    private String mul(ViewGroup view){
-        int a = getTermFromViewAtIndex(view, 0);
-        int b = getTermFromViewAtIndex(view, 2);
-        int res = calculator.mul(a, b);
-        return a+"*"+b+"="+res;
-    }
-
-    private String fact(ViewGroup view){
-        int a = getTermFromViewAtIndex(view, 0);
-        int res = calculator.fact(a);
-        return a+"!"+"="+res;
-    }
-
-    private String pow(ViewGroup view){
-        int a = getTermFromViewAtIndex(view, 0);
-        int b = getTermFromViewAtIndex(view, 2);
-        int res = calculator.pow(a, b);
-        return a+"^"+b+"="+res;
-    }
-
-    public void compute(View view){
-        ViewGroup outerGroup = (ViewGroup) view.getParent().getParent();
-        ArrayList<String> res = new ArrayList<>();
-        res.add(sum((ViewGroup) outerGroup.getChildAt(0)));
-        res.add(sub((ViewGroup) outerGroup.getChildAt(1)));
-        res.add(mul((ViewGroup) outerGroup.getChildAt(2)));
-        res.add(fact((ViewGroup) outerGroup.getChildAt(3)));
-        res.add(pow((ViewGroup) outerGroup.getChildAt(4)));
-
-        Intent intent = new Intent(this, Ex5ResultActivity.class);
-        intent.putStringArrayListExtra("results", res);
-        startActivity(intent);
-
-    }
-
-    private int getTermFromViewAtIndex(ViewGroup view, int i){
-        EditText editText = (EditText) view.getChildAt(i);
-        return Integer.parseInt(editText.getText().toString());
-    }
-
-
-
 }

@@ -1,71 +1,81 @@
 package it.polimi.giovanni.androidsimpleexercise.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import it.polimi.giovanni.androidsimpleexercise.R;
 import it.polimi.giovanni.androidsimpleexercise.model.Calculator;
 
-public class Ex3bActivity extends AppCompatActivity {
+public class Ex9Activity extends AppCompatActivity {
 
     private Calculator calculator = new Calculator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ex3b);
+        setContentView(R.layout.activity_ex9);
     }
 
-    public void sum(View view){
+    private String sum(ViewGroup view){
         int a = getTermFromViewAtIndex(view, 0);
         int b = getTermFromViewAtIndex(view, 2);
         int res = calculator.sum(a, b);
-        setResultView(res);
+        return a+"+"+b+"="+res;
     }
 
-    public void sub(View view){
+    private String sub(ViewGroup view){
         int a = getTermFromViewAtIndex(view, 0);
         int b = getTermFromViewAtIndex(view, 2);
         int res = calculator.sub(a, b);
-        setResultView(res);
+        return a+"-"+b+"="+res;
     }
 
-    public void mul(View view){
+    private String mul(ViewGroup view){
         int a = getTermFromViewAtIndex(view, 0);
         int b = getTermFromViewAtIndex(view, 2);
         int res = calculator.mul(a, b);
-        setResultView(res);
+        return a+"*"+b+"="+res;
     }
 
-    public void fact(View view){
+    private String fact(ViewGroup view){
         int a = getTermFromViewAtIndex(view, 0);
         int res = calculator.fact(a);
-        setResultView(res);
+        return a+"!"+"="+res;
     }
 
-    public void pow(View view){
+    private String pow(ViewGroup view){
         int a = getTermFromViewAtIndex(view, 0);
         int b = getTermFromViewAtIndex(view, 2);
         int res = calculator.pow(a, b);
-        setResultView(res);
+        return a+"^"+b+"="+res;
     }
 
-    private int getTermFromViewAtIndex(View view, int i){
-        ViewGroup linearLayout = (ViewGroup) view.getParent();
-        EditText editText = (EditText) linearLayout.getChildAt(i);
+    public void compute(View view){
+        ViewGroup outerGroup = (ViewGroup) view.getParent().getParent();
+        ArrayList<String> res = new ArrayList<>();
+        res.add(sum((ViewGroup) outerGroup.getChildAt(0)));
+        res.add(sub((ViewGroup) outerGroup.getChildAt(1)));
+        res.add(mul((ViewGroup) outerGroup.getChildAt(2)));
+        res.add(fact((ViewGroup) outerGroup.getChildAt(3)));
+        res.add(pow((ViewGroup) outerGroup.getChildAt(4)));
 
+        Intent intent = new Intent(this, Ex9ResultActivity.class);
+        intent.putStringArrayListExtra("results", res);
+        startActivity(intent);
+
+    }
+
+    private int getTermFromViewAtIndex(ViewGroup view, int i){
+        EditText editText = (EditText) view.getChildAt(i);
         return Integer.parseInt(editText.getText().toString());
     }
 
 
 
-    private void setResultView(int res){
-        TextView resView = (TextView) findViewById(R.id.res);
-        resView.setText(""+res);
-    }
 }

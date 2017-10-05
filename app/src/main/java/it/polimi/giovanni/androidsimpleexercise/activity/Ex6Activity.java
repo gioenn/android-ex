@@ -1,18 +1,11 @@
-
-
 package it.polimi.giovanni.androidsimpleexercise.activity;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-
-import java.security.InvalidParameterException;
-import java.util.ArrayList;
+import android.widget.TextView;
 
 import it.polimi.giovanni.androidsimpleexercise.R;
 import it.polimi.giovanni.androidsimpleexercise.model.Calculator;
@@ -24,83 +17,56 @@ public class Ex6Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ex5);
+        setContentView(R.layout.activity_ex6);
+
+
     }
 
-    private String sum(ViewGroup view) throws NumberFormatException {
+    public void sum(View view){
         int a = getTermFromViewAtIndex(view, 0);
         int b = getTermFromViewAtIndex(view, 2);
         int res = calculator.sum(a, b);
-        return a + "+" + b + "=" + res;
+        setResultView(res);
     }
 
-    private String sub(ViewGroup view) throws NumberFormatException {
+    public void sub(View view){
         int a = getTermFromViewAtIndex(view, 0);
         int b = getTermFromViewAtIndex(view, 2);
         int res = calculator.sub(a, b);
-        return a + "-" + b + "=" + res;
+        setResultView(res);
     }
 
-    private String mul(ViewGroup view) throws NumberFormatException {
+    public void mul(View view){
         int a = getTermFromViewAtIndex(view, 0);
         int b = getTermFromViewAtIndex(view, 2);
         int res = calculator.mul(a, b);
-        return a + "*" + b + "=" + res;
+        setResultView(res);
     }
 
-    private String fact(ViewGroup view) throws NumberFormatException {
+    public void fact(View view){
         int a = getTermFromViewAtIndex(view, 0);
         int res = calculator.fact(a);
-        return a + "!" + "=" + res;
+        setResultView(res);
     }
 
-    private String pow(ViewGroup view) throws NumberFormatException {
+    public void pow(View view){
         int a = getTermFromViewAtIndex(view, 0);
         int b = getTermFromViewAtIndex(view, 2);
         int res = calculator.pow(a, b);
-        return a + "^" + b + "=" + res;
+        setResultView(res);
     }
 
-    public void compute(View view) {
-        ViewGroup outerGroup = (ViewGroup) view.getParent().getParent();
-        ArrayList<String> res = new ArrayList<>();
+    private int getTermFromViewAtIndex(View view, int i){
+        ViewGroup linearLayout = (ViewGroup) view.getParent();
+        EditText editText = (EditText) linearLayout.getChildAt(i);
 
-        try {
-            res.add(sum((ViewGroup) outerGroup.getChildAt(0)));
-            res.add(sub((ViewGroup) outerGroup.getChildAt(1)));
-            res.add(mul((ViewGroup) outerGroup.getChildAt(2)));
-            res.add(fact((ViewGroup) outerGroup.getChildAt(3)));
-            res.add(pow((ViewGroup) outerGroup.getChildAt(4)));
-            Intent intent = new Intent(this, Ex5ResultActivity.class);
-            intent.putStringArrayListExtra("results", res);
-            startActivity(intent);
-        }
-        catch (NumberFormatException e){
-            System.out.println(e.getClass());
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage(R.string.warning).setCancelable(false);
-
-            builder.setPositiveButton(R.string.positive_confirm, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.cancel();
-                }
-            });
-
-            AlertDialog alert = builder.create();
-            alert.show();
-        }
-
-
-
+        return Integer.parseInt(editText.getText().toString());
     }
 
-    private int getTermFromViewAtIndex(ViewGroup view, int i) throws NumberFormatException {
-        EditText editText = (EditText) view.getChildAt(i);
-        int term;
 
-        term = Integer.parseInt(editText.getText().toString());
 
-        return term;
+    private void setResultView(int res){
+        TextView resView = (TextView) findViewById(R.id.res);
+        resView.setText(""+res);
     }
-
 }

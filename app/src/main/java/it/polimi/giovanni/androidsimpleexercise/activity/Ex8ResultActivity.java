@@ -6,12 +6,12 @@ import android.widget.TextView;
 
 import it.polimi.giovanni.androidsimpleexercise.R;
 
-public class Ex4ResultActivity extends AppCompatActivity {
+public class Ex8ResultActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ex4_result);
+        setContentView(R.layout.activity_ex8_result);
 
         String title = getIntent().getStringExtra("title");
         String res = getIntent().getIntExtra("result", 0)+"";
