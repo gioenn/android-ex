@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import it.polimi.giovanni.androidsimpleexercise.R;
-import it.polimi.giovanni.androidsimpleexercise.adapter.Ex7MovieAdapter;
+import it.polimi.giovanni.androidsimpleexercise.adapter.Ex12MovieAdapter;
 import it.polimi.giovanni.androidsimpleexercise.model.Movie;
 
 public class Ex12Activity extends AppCompatActivity {
@@ -16,7 +16,7 @@ public class Ex12Activity extends AppCompatActivity {
         setContentView(R.layout.activity_ex12);
 
         ListView listView = (ListView) findViewById(R.id.movieList);
-        listView.setAdapter(new Ex7MovieAdapter(this, Movie.getMovies()));
+        listView.setAdapter(new Ex12MovieAdapter(this, Movie.getMovies()));
     }
 
 

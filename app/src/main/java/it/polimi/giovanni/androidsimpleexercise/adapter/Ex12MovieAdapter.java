@@ -16,9 +16,9 @@ import it.polimi.giovanni.androidsimpleexercise.model.Movie;
  * Created by giovanniquattrocchi on 29/05/17.
  */
 
-public class Ex7MovieAdapter extends ArrayAdapter<Movie> {
+public class Ex12MovieAdapter extends ArrayAdapter<Movie> {
 
-    public Ex7MovieAdapter(Context context, List<Movie> objects) {
+    public Ex12MovieAdapter(Context context, List<Movie> objects) {
         super(context, 0, objects);
     }
 
