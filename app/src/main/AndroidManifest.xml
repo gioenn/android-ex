@@ -43,17 +43,25 @@
             android:name=".activity.Ex10Activity"
             android:label="Exercise 10" />
         <activity
-            android:name=".activity.Ex11Activity"
-            android:label="Exercise 11" />
+            android:name=".activity.Ex12Activity"
+            android:label="Exercise 12" />
         <activity
             android:name=".activity.Ex2Activity"
-            android:label="Exercise 2"/>
+            android:label="Exercise 2" />
         <activity
             android:name=".activity.Ex3Activity"
-            android:label="Exercise 3"/>
+            android:label="Exercise 3" />
         <activity
             android:name=".activity.Ex4Activity"
-            android:label="Exercise 4"/>
+            android:label="Exercise 4" />
+        <activity android:name=".activity.Ex11Activity"
+            android:label="Your Turn" />
+            />
+        <activity android:name=".activity.Ex11DealerActivity"
+            android:label="Dealer Turn" />/>
+        <activity android:name=".activity.Ex11StatsActivity"
+            android:label="Stats"
+            ></activity>
     </application>
 
 </manifest>

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String[] optionsLabels = {"EX 1", "EX 2", "EX 3", "EX 4", "EX 5", "EX 6", "EX 7", "EX 8", "EX 9", "EX 10", "EX 11"};
+        String[] optionsLabels = {"EX 1", "EX 2", "EX 3", "EX 4", "EX 5", "EX 6", "EX 7", "EX 8", "EX 9", "EX 10", "EX 11", "EX 12"};
 
         final List<Class<?>> options = new ArrayList<>();
         options.add(Ex1Activity.class);
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         options.add(Ex9Activity.class);
         options.add(Ex10Activity.class);
         options.add(Ex11Activity.class);
+        options.add(Ex12Activity.class);
 
         GridView mainMenu = (GridView) findViewById(R.id.mainMenu);
 

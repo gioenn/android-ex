@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="it.polimi.giovanni.androidsimpleexercise.activity.Ex11Activity">
+    tools:context="it.polimi.giovanni.androidsimpleexercise.activity.Ex11DealerActivity">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/mainLayout"
@@ -38,40 +38,31 @@
     </android.support.constraint.ConstraintLayout>
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        android:gravity="center"
         >
 
-        <Button
-            android:text="deal"
-            android:onClick="deal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+
         <TextView
             android:id="@+id/score"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="0"
             android:textSize="30dp"
             android:textColor="@color/colorAccent"
             android:gravity="center"
             />
         <Button
-            android:text="stay"
-            android:onClick="stay"
+            android:onClick="next"
+            android:text="next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Stats"
-        android:onClick="stats"
-        android:layout_gravity="center"
-        />
+
 
 </LinearLayout>

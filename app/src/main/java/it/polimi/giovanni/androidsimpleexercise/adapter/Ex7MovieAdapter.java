@@ -30,7 +30,7 @@ public class Ex7MovieAdapter extends ArrayAdapter<Movie> {
         if (convertView == null){
             LayoutInflater layoutInflater = (LayoutInflater) getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-               convertView = layoutInflater.inflate(R.layout.movie_row_ex11, null);
+               convertView = layoutInflater.inflate(R.layout.movie_row_ex12, null);
         }
 
         TextView titleView = (TextView) convertView.findViewById(R.id.titleView);
