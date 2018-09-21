@@ -33,13 +33,15 @@ public class SevenAndHalf {
         return sh;
     }
 
-    public void deal(){
+    public int deal(){
         Player p = players.get(turnIndex);
         Card c = deck.deal();
         p.addCard(c);
         if (p.getScore() >= threshold){
             stay();
+            return 0;
         }
+        return 1;
     }
 
     public Card getCurrentCard(){
@@ -123,7 +125,9 @@ public class SevenAndHalf {
         private Stats(){}
 
         protected void addResult(Result result){
+
             results.add(0, result);
+
         }
 
         public List<Result> getResult(){

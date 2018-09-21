@@ -23,7 +23,8 @@ public class Ex11DealerActivity extends AppCompatActivity {
 
     public void next(View view){
 
-        sh.deal();
+        boolean over = sh.deal() == 0;
+
         Card card = sh.getCurrentCard();
         float score = sh.getCurrentScore();
         TextView scoreView = (TextView) findViewById(R.id.score);
@@ -32,7 +33,9 @@ public class Ex11DealerActivity extends AppCompatActivity {
         cardView.setText(card.getDescription());
 
         if(sh.currentMaxScore() <= sh.getCurrentScore()) {
-            sh.stay();
+            if (!over) {
+                sh.stay();
+            }
             setResult(1);
             finish();
         }
